@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="display-4 my-4">Pages Admin&nbsp;<a href="{{ path('newpaints') }}"><i
+                                class="icofont-ui-add"></i></a></h1>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Titre</th>
+                    <th>Création</th>
+                    <th>Longueur</th>
+                    <th>Largeur</th>
+                    <th><i class="icofont-ui-delete"></i></th>
+                    <th><i class="icofont-ui-edit"></i></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for paint in paints %}
+                        <td><img src="{{ asset('img/paints/' ~ paint.image) }}" class="img-fluid" alt=""></td>
+                        <td>{{ paint.title|capitalize }}</td>
+                        <td>{{ paint.created|date("d/m/Y") }}</td>
+                        <td>{{ paint.height }}cm</td>
+                        <td>{{ paint.width }}cm</td>
+                        <td><a href="{{ path('delpaint', {id:paint.id}) }}" onclick="return confirm('Etes vous sûr ?')"><i
+                                        class="icofont-ui-delete"></i></a></td>
+                        <td><a href="{{ path('editpaints', {id:paint.id}) }}"
+                               onclick="return confirm('Etes vous sûr ?')"><i class="icofont-ui-edit"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

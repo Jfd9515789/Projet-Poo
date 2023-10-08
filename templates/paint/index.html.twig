@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="display-4 my-4">Pages Home</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus alias at atque aut consectetur
+                    dolorem doloremque, doloribus, eveniet iure, minus molestiae necessitatibus nihil numquam quia saepe
+                    vel? Quos, tempore.</p>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Création</th>
+                    <th>Longueur</th>
+                    <th>Largeur</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for paint in paints %}
+                    <tr>
+                        <td><img src="{{ asset('img/paints/' ~ paint.image) }}" class="img-thumbnail" alt=""></td>
+                        <td><a href="{{ path('detail', {id:paint.id}) }}">{{ paint.title|capitalize }}</a></td>
+                        <td>{{ paint.description|capitalize }}</td>
+                        <td>{{ paint.created|date("d/m/Y") }}</td>
+                        <td>{{ paint.height }}cm</td>
+                        <td>{{ paint.width }}cm</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

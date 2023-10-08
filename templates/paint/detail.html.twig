@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="display-4 my-4">Détail de la peinture</h2>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset('img/paints/' ~ paint.image) }}" class="img-thumbnail">
+            </div>
+            <div class="col-md-8">
+                <h3 class="display-5">Titre : {{ paint.title|upper }}</h3>
+                <h4>Date de création : {{ paint.created|date('d/m/Y') }}</h4>
+                <h4>Longueur : {{ paint.height }}cm</h4>
+                <h4>Largeur : {{ paint.width }}cm</h4>
+                <h4>Catégorie : {{ paint.category.name }}</h4>
+                <h4>Commentaire : {{ comment.commentaire }}</h4>
+                <h4>Description :</h4><p>{{ paint.description }}</p>
+                <p><a href="{{ path('paint') }}" class="btn btn-outline-dark">Liste des peintures</a></p>
+            </div>
+        </div>
+    </main>
+{% endblock %}
